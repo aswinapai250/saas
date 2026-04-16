@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: 'The simplest way to share all your links in one place. Custom themes, click analytics, and an AI bio generator — free forever.',
   keywords: ['bio link', 'linktree alternative', 'link in bio', 'free bio page'],
   manifest: '/manifest.json',
+  themeColor: '#4f46e5',
   openGraph: {
     type: 'website',
     locale: 'en_US',
