@@ -6,6 +6,23 @@ import { useState, useEffect } from "react";
 import { updateProfile } from "@/lib/firestore";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription 
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { 
+  User, 
+  Check, 
+  LogOut, 
+  CreditCard, 
+  Crown 
+} from "lucide-react";
 
 export default function SettingsPage() {
   const { user, profile, logout } = useAuth();
