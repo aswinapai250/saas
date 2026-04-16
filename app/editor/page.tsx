@@ -29,7 +29,12 @@ import { CSS } from "@dnd-kit/utilities";
 export default function Editor() {
   const { user, profile, loading, refreshProfile } = useAuth();
   const [links, setLinks] = useState<LinkItem[]>([]);
-  const [tempProfile, setTempProfile] = useState({ displayName: "", bio: "", theme: "default-light" });
+  const [tempProfile, setTempProfile] = useState({ 
+    displayName: "", 
+    bio: "", 
+    photoURL: "",
+    theme: "default-light" 
+  });
   const [saving, setSaving] = useState(false);
   const [aiPrompt, setAiPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -50,6 +55,7 @@ export default function Editor() {
       setTempProfile({ 
         displayName: profile.displayName || "", 
         bio: profile.bio || "",
+        photoURL: profile.photoURL || "",
         theme: profile.theme || "default-light"
       });
     }
@@ -179,6 +185,18 @@ export default function Editor() {
                     onChange={e => setTempProfile({ ...tempProfile, bio: e.target.value.slice(0, 160) })}
                     placeholder="Tell your story..."
                   />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-semibold text-slate-700">Profile Photo URL</Label>
+                  <Input 
+                    className="rounded-xl border-slate-200 focus:ring-indigo-500"
+                    value={tempProfile.photoURL} 
+                    onChange={e => setTempProfile({ ...tempProfile, photoURL: e.target.value })}
+                    placeholder="https://example.com/photo.jpg"
+                  />
+                  <p className="text-[10px] text-slate-400">Paste a URL for your profile picture (e.g. from Google or social media)</p>
+                </div>
 
                   {/* AI Generator UI */}
                   <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50 space-y-3">
@@ -285,8 +303,8 @@ export default function Editor() {
               >
                 <div className="flex flex-col items-center">
                   <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-4 flex items-center justify-center border-4 border-white/50 shadow-md overflow-hidden">
-                    {profile.photoURL ? (
-                      <img src={profile.photoURL} alt="" className="w-full h-full object-cover" />
+                    {tempProfile.photoURL ? (
+                      <img src={tempProfile.photoURL} alt="" className="w-full h-full object-cover" />
                     ) : (
                       <div className="text-2xl font-bold text-white">{tempProfile.displayName[0] || "U"}</div>
                     )}
