@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import { useState, useEffect } from "react";
 import { updateProfile } from "@/lib/firestore";
 import { Input } from "@/components/ui/input";
