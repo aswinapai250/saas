@@ -17,6 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ username:
   const description = profile.bio || `Connect with ${profile.displayName || profile.username} on BioLink.`;
   const ogUrl = new URL('https://saas-biolink.vercel.app/api/og');
   ogUrl.searchParams.set('username', profile.username);
+  ogUrl.searchParams.set('name', profile.displayName || profile.username);
+  if (profile.bio) ogUrl.searchParams.set('bio', profile.bio);
+  if (profile.photoURL) ogUrl.searchParams.set('photo', profile.photoURL);
 
   return {
     title,
