@@ -222,7 +222,6 @@ export default function Editor() {
                     </div>
                     <p className="text-[10px] text-slate-400">Describe yourself in a few words and AI will draft your bio.</p>
                   </div>
-                </div>
               </CardContent>
             </Card>
 
